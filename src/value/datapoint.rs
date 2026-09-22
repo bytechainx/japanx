@@ -196,6 +196,7 @@ impl JapanCbDataPoint {
 
 /// 校验数据点的完整性与内部一致性。
 pub fn validate_data_point(data_point: &JapanCbDataPoint) -> JapanCbResult<()> {
+    data_point.period.validate()?;
     if let DataPointValue::Value(value) = data_point.value {
         if !value.is_finite() {
             return Err(JapanCbError::Invalid("观测值必须是有限数值".to_owned()));
@@ -424,5 +425,27 @@ mod tests {
                 .kind(),
             JapanCbErrorKind::NotApplicable
         );
+    }
+
+    #[test]
+    fn invalid_public_periods_are_rejected() {
+        for period in [
+            Period::Month {
+                year: 2026,
+                month: 99,
+            },
+            Period::Quarter {
+                year: 2026,
+                quarter: 0,
+            },
+            Period::Year(0),
+            Period::TenDay {
+                year: 2026,
+                month: 9,
+                segment: 99,
+            },
+        ] {
+            assert!(data_point(period, period.frequency(), DataPointValue::Value(1.0)).is_err());
+        }
     }
 }

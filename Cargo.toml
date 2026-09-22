@@ -1,6 +1,6 @@
 [package]
 name = "japanx"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 rust-version = "1.85"
 description = "日本央行（BOJ）源事实类型层：12 个 JP.* metric_code、期间与单位、离线解析与 fail-closed 授权判定"
