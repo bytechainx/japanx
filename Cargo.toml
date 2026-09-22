@@ -1,0 +1,51 @@
+[package]
+name = "japanx"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.85"
+description = "日本央行（BOJ）源事实类型层：12 个 JP.* metric_code、期间与单位、离线解析与 fail-closed 授权判定"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/bytechainx/japanx"
+homepage = "https://github.com/bytechainx/japanx"
+documentation = "https://github.com/bytechainx/japanx#readme"
+readme = "README.md"
+keywords = ["boj", "japan", "metric-code", "macro", "data-source"]
+categories = ["data-structures", "parsing"]
+include = [
+    "src/**/*",
+    "tests/**/*",
+    "benches/**/*",
+    "examples/**/*",
+    "docs/**/*",
+    "README.md",
+    "CHANGELOG.md",
+    "CONTEXT.md",
+    "CONTRIBUTING.md",
+    "LICENSE-*",
+    "Cargo.toml",
+]
+
+[dependencies]
+thiserror = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+
+[dev-dependencies]
+
+[[bench]]
+name = "hot_path"
+harness = false
+
+[lints.rust]
+private_interfaces = "deny"
+private_bounds = "deny"
+unused_must_use = "warn"
+
+[lints.clippy]
+unwrap_used = "deny"
+expect_used = "deny"
+panic = "deny"
+unreachable = "deny"
+todo = "deny"
+unimplemented = "deny"
