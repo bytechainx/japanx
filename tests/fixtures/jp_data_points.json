@@ -1,0 +1,37 @@
+{
+  "_synthetic": true,
+  "_note": "本文件为特性 005 自拟的合成样本，不是真实源数据，不构成任何证据。metric_code 取自清单 §1.1 的字面值；单位取自清单 §1.2/§3；其余取值（期间 / 数值 / 状态）为显式占位，因为清单未给出它们。",
+  "data_points": [
+    {
+      "metric_code": "JP.BS.TOTAL_ASSETS",
+      "period": "2026-08",
+      "frequency": "Monthly",
+      "value": 1.0,
+      "unit": "100 million yen",
+      "revision": null
+    },
+    {
+      "metric_code": "JP.IR.TONA",
+      "period": "2026-09-18",
+      "frequency": "Daily",
+      "value": 0.5,
+      "unit": "100 million yen"
+    },
+    {
+      "metric_code": "JP.CA.EXCESS_RESERVES",
+      "period": "2026-09-T2",
+      "frequency": "TenDay",
+      "value": null,
+      "obs_status": "SYNTH_STATUS",
+      "unit": "100 million yen"
+    },
+    {
+      "metric_code": "JP.TK.LARGE_MFG_DI",
+      "period": "2026-Q3",
+      "frequency": "Quarterly",
+      "value": 2.0,
+      "unit": "100 million yen",
+      "revision": "SYNTH_REV"
+    }
+  ]
+}

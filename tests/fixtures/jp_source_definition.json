@@ -1,0 +1,5 @@
+{
+  "_synthetic": true,
+  "_note": "本文件为特性 005 自拟的合成样本，不是真实源数据，不构成任何证据。`toml` 字段承载一份合成源定义样例，字段面只含清单 §1.2/§3 已钉死的项（kind / encoding / unit / scale / metric_codes）；**不含**任何限流数字（授权前不写具体限流数字）。",
+  "toml": "kind = \"csv_download\"\nencoding = \"shift_jis\"\nunit = \"100 million yen\"\nscale = 1\nmetric_codes = [\"JP.BS.TOTAL_ASSETS\", \"JP.BS.JGB_HOLDINGS\", \"JP.CA.EXCESS_RESERVES\"]\n"
+}
