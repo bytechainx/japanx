@@ -196,6 +196,11 @@ impl JapanCbDataPoint {
 
 /// 校验数据点的完整性与内部一致性。
 pub fn validate_data_point(data_point: &JapanCbDataPoint) -> JapanCbResult<()> {
+    if let DataPointValue::Value(value) = data_point.value {
+        if !value.is_finite() {
+            return Err(JapanCbError::Invalid("观测值必须是有限数值".to_owned()));
+        }
+    }
     if data_point.metric_code.as_str().trim().is_empty() {
         return Err(JapanCbError::Missing("metric_code 为空".to_owned()));
     }
@@ -262,6 +267,36 @@ mod tests {
             unit(),
             None,
         )
+    }
+
+    #[test]
+    fn non_finite_constructor_is_rejected() {
+        let period = Period::day(Date::new(2026, 9, 18).expect("合法日期"));
+        for value in [f64::NAN, f64::INFINITY, f64::NEG_INFINITY] {
+            assert_eq!(
+                data_point(period, Frequency::Daily, DataPointValue::Value(value))
+                    .expect_err("非有限值必须拒绝")
+                    .kind(),
+                crate::JapanCbErrorKind::Invalid
+            );
+        }
+    }
+
+    #[test]
+    fn non_finite_mutation_is_rejected() {
+        let period = Period::day(Date::new(2026, 9, 18).expect("合法日期"));
+        let value = 1.0;
+        let mut sample =
+            data_point(period, Frequency::Daily, DataPointValue::Value(value)).expect("有限值合法");
+        for value in [f64::NAN, f64::INFINITY, f64::NEG_INFINITY] {
+            sample.value = DataPointValue::Value(value);
+            assert_eq!(
+                validate_data_point(&sample)
+                    .expect_err("修改后的非有限值必须拒绝")
+                    .kind(),
+                crate::JapanCbErrorKind::Invalid
+            );
+        }
     }
 
     #[test]
