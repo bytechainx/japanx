@@ -3,6 +3,13 @@
 本文件记录 `japanx` 的用户可见变更，遵循 [Keep a Changelog](https://keepachangelog.com/)
 与 [Semantic Versioning](https://semver.org/)。
 
+## [0.1.2] - 2026-09-23
+
+### 修正
+
+- 完整性校验复验所有期间变体，拒绝非法年月、季度与旬序号。
+- 按版本规则「实现向契约靠拢」推进 PATCH，不新增公共 API。
+
 ## [Unreleased]
 
 ## [0.1.1] - 2026-09-23
