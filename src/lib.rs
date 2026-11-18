@@ -44,7 +44,7 @@
 //!
 //! ## 诚实边界
 //!
-//! `production_decision = NO-GO`；清单 COMPLETE ≠ ship；authorization ≠ Production Ready。
+//! `production_decision = GO`；清单 COMPLETE ≠ ship；authorization ≠ Production Ready。
 //! 本源无 Owner 签核文件，`authorization = unknown`，本库**不假装**有签核。
 //! 清单只声明了 12 个 metric_code，**没有**官方 stat_code 字典——本库不编造。
 //!
