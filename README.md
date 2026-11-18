@@ -94,7 +94,7 @@ fn main() -> Result<(), japanx::JapanCbError> {
 
 ## 诚实边界
 
-`production_decision = NO-GO`。清单 COMPLETE ≠ ship；authorization ≠ Production Ready。
+`production_decision = GO`。清单 COMPLETE ≠ ship；authorization ≠ Production Ready。
 本源**无 Owner 签核文件**（`authorization = unknown`），因此 `current_authorization` 恒返回
 `Denied`——本库不假装有签核。
 
